@@ -38,6 +38,7 @@ const SERVICES = [
 	"dms",
 	"dynamodb",
 	"ec2",
+	"ec2sp",
 	"es",
 	"efs",
 	"ecs",
@@ -106,6 +107,72 @@ const SERVICES = [
 	"zocalo",
 ];
 
+// In a lot of cases, we need to actually add the favicon tag, because no one at Amazon did this yet!
+const ADD_FAVICON = [
+	"amazon-mq",
+	"apigateway",
+	"appsync",
+	"athena",
+	"awsautoscaling",
+	"batch",
+	"billing",
+	"cloud9",
+	"cloudhsm",
+	"cloudsearch",
+	"codebuild",
+	"codecommit",
+	"codedeploy",
+	"codepipeline",
+	"comprehend",
+	"connect",
+	"console",
+	"cost-reports",
+	"deeplens",
+	"directconnect",
+	"devicefarm",
+	"discovery",
+	"dms",
+	"ec2sp",
+	"es",
+	"efs",
+	"ecs",
+	"eks",
+	"glacier",
+	"glue",
+	"guardduty",
+	"iot",
+	"importexport",
+	"kinesis",
+	"kinesisvideo",
+	"kms",
+	"lex",
+	"ls",
+	"machinelearning",
+	"mediaconvert",
+	"medialive",
+	"mediapackage",
+	"mediastore",
+	"mediatailor",
+	"migrationhub",
+	"polly",
+	"rekognition",
+	"s3",
+	"sagemaker",
+	"servermigration",
+	"sns",
+	"storagegateway",
+	"sumerian",
+	"systems-manager",
+	"swf",
+	"transcribe",
+	"translate",
+	"waf",
+	"wafv2",
+	"workmail",
+	"xray",
+	"zocalo"
+];
+
 // Look for the string blocks right after the 'amazon.com/' (ec2/s3/iam/ses/etc...)
 let reg = /:\/\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/([a-z0-9.-]*)\/*/g;
 
@@ -128,67 +195,7 @@ if (domain !== "docs.aws.amazon.com") {
 		let awsService = awsServiceName + ".png";
 
 		// In a lot of cases, we need to actually add the favicon tag, because no one at Amazon did this yet!
-		if (awsServiceName === 'amazon-mq' ||
-				awsServiceName === 'apigateway' ||
-				awsServiceName === 'appsync' ||
-				awsServiceName === 'athena' ||
-				awsServiceName === 'awsautoscaling' ||
-				awsServiceName === 'batch' ||
-				awsServiceName === 'billing' ||			
-				awsServiceName === 'cloud9' ||
-				awsServiceName === 'cloudhsm' ||
-				awsServiceName === 'cloudsearch' ||
-				awsServiceName === 'codebuild' ||
-				awsServiceName === 'codecommit' ||
-				awsServiceName === 'codedeploy' ||
-				awsServiceName === 'codepipeline' ||
-				awsServiceName === 'comprehend' ||
-				awsServiceName === 'connect' ||
-				awsServiceName === 'console' ||
-				awsServiceName === 'cost-reports' ||
-				awsServiceName === 'deeplens' ||
-				awsServiceName === 'directconnect' ||
-				awsServiceName === 'devicefarm' ||
-				awsServiceName === 'discovery' ||
-				awsServiceName === 'dms' ||
-				awsServiceName === 'es' ||
-				awsServiceName === 'efs' ||
-				awsServiceName === 'ecs' ||
-				awsServiceName === 'eks' ||
-				awsServiceName === 'glacier' ||
-				awsServiceName === 'glue' ||
-				awsServiceName === 'guardduty' ||
-				awsServiceName === 'iot' ||
-				awsServiceName === 'importexport' ||
-				awsServiceName === 'kinesis' ||
-				awsServiceName === 'kinesisvideo' ||
-				awsServiceName === 'kms' ||
-				awsServiceName === 'lex' ||
-				awsServiceName === 'ls' ||
-				awsServiceName === 'machinelearning' ||
-				awsServiceName === 'mediaconvert' ||
-				awsServiceName === 'medialive' ||
-				awsServiceName === 'mediapackage' ||
-				awsServiceName === 'mediastore' ||
-				awsServiceName === 'mediatailor' ||
-				awsServiceName === 'migrationhub' ||
-				awsServiceName === 'polly' ||
-				awsServiceName === 'rekognition' ||
-				awsServiceName === 's3' ||
-				awsServiceName === 'sagemaker' ||
-				awsServiceName === 'servermigration' ||
-				awsServiceName === 'sns' ||
-				awsServiceName === 'storagegateway' ||
-				awsServiceName === 'sumerian' ||
-				awsServiceName === 'systems-manager' ||
-				awsServiceName === 'swf' ||
-				awsServiceName === 'transcribe' ||
-				awsServiceName === 'translate' ||
-				awsServiceName === 'waf' ||
-				awsServiceName === 'wafv2' ||
-				awsServiceName === 'workmail' ||
-				awsServiceName === 'xray' ||
-				awsServiceName === 'zocalo') {
+		if (ADD_FAVICON.includes(awsServiceName)) {
 
 			// Build the icon and shortcut icon tags so we can add them inside the head tag
 			let iconNode = document.createElement('link');
